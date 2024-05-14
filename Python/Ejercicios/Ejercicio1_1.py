@@ -12,11 +12,11 @@ respuesta_separada = respuesta_usuario.split(' ')
 
 numero_palabras = len(respuesta_separada)
 
-tiempo_usuario =  numero_palabras / 2
+tiempo_usuario =  round(numero_palabras / 2, 2)
 
-velocidad_dalto = velocidad_hablar * 1.3 
+velocidad_dalto = round(velocidad_hablar * 1.3, 2)
 
-tiempo_dalto = numero_palabras * 100 // velocidad_dalto / 100
+tiempo_dalto = round(numero_palabras / velocidad_dalto, 2)
 
 print('----------------USUARIO----------------')
 if tiempo_usuario > 60:
