@@ -24,7 +24,7 @@ resultado_bool = all([1, True, (1, 2, 3)])
 
 print(resultado_bool)
 
-# SUM: suma de todos los valores de un iterable
+# SUM: suma de todos los valores de un iterable, solo datos compuestos de numeros
 
 suma_total = sum(lista)
 
