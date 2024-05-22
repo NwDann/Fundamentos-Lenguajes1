@@ -52,15 +52,21 @@ a: float, b: float, *, equation: Callable[[float], float], tol: float, N: int
     return p, i
 
 def newton_raphson(aproximation : float, tol : float, N : int, equation : Callable[[float], float],
-                   derivate : Callable[[float], float]) -> tuple[float, int] | None:
-    i = 1
-    p0 = aproximation
-    p = 0
+                   derivative : Callable[[float], float]) -> tuple[float, int] | None:
+    
     for i in range(N):
-        p = p0 - equation(p0) / derivate(p0)
+        f_p = equation(p0)
+        fd_p = derivative(p0)
+        
+        if fd_p == 0:
+            raise ValueError(f'Can\'t continue because derivative is zero in {i} iteration')
+        
+        p = p0 - f_p / fd_p
+        
+        fd_p = p0 - equation(p0) / derivative(p0)
         if abs(p - p0) < tol:
             return p, i
-        i = i + 1
+        
         p0 = p
     return None
     
