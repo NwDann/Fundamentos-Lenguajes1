@@ -50,3 +50,17 @@ a: float, b: float, *, equation: Callable[[float], float], tol: float, N: int
         else:
             b = p
     return p, i
+
+def newton_raphson(aproximation : float, tol : float, N : int, equation : Callable[[float], float],
+                   derivate : Callable[[float], float]) -> tuple[float, int] | None:
+    i = 1
+    p0 = aproximation
+    p = 0
+    for i in range(N):
+        p = p0 - equation(p0) / derivate(p0)
+        if abs(p - p0) < tol:
+            return p, i
+        i = i + 1
+        p0 = p
+    return None
+    
