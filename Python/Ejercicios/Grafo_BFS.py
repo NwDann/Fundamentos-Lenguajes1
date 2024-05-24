@@ -1,5 +1,6 @@
 
 from collections import deque
+from typing import Callable
 
 def person_is_seller(person : str) -> bool:
     return person == "Peggy"
@@ -17,7 +18,7 @@ def build_path(predecesors : dict, goal, start):
     return path
 
 
-def search(start, graph) -> bool | list:
+def search(start, graph, funtion : Callable) -> bool | list:
     search_queue = deque(graph[start])
     searched = []
     predecesors = {}
@@ -26,7 +27,7 @@ def search(start, graph) -> bool | list:
         person = search_queue.popleft()
         if not person in searched:
             if person_is_seller(person):
-                return build_path(predecesors, person, start)
+                return funtion(predecesors, person, start)
             
             else:
                 for neighbor in graph[person]:
