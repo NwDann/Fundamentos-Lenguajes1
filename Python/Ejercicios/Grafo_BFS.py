@@ -26,8 +26,8 @@ def search(start, graph, funtion : Callable) -> bool | list:
     while search_queue:
         person = search_queue.popleft()
         if not person in searched:
-            if person_is_seller(person):
-                return funtion(predecesors, person, start)
+            if funtion(person):
+                return build_path(predecesors, person, start)
             
             else:
                 for neighbor in graph[person]:
@@ -51,7 +51,7 @@ graph = {
     'Thom' : []
 }
 
-ojo = search('You', graph)
+ojo = search('You', graph, person_is_seller)
 
 if not ojo:
     print('Mango seller is not inside our graph')
