@@ -11,6 +11,7 @@ def DFS(start, graph, searched, componentR):
             print(f"Final de una rama en {neighbor}")
             print(f"Vuelve a {start}")
             print()
+    return componentR
 
 graph = {
     0: [],
@@ -24,22 +25,21 @@ graph = {
     8: [3, 7]
 }
 
-component = []
 
-DFS(1, graph, [False] * len(graph), component)
+componentR = DFS(1, graph, [False] * len(graph), [])
 
-print(f"Busqueda DFS dio como resultado : {component}")
+print(f"Busqueda DFS dio como resultado : {componentR}")
 
 graph2 = {
-    "start" : [],
-    "A" : [],
-    "B" : [],
-    "C" : [],
+    "start" : ["F", "A", "B"],
+    "A" : ["E", "B"],
+    "B" : ["D", "C"],
+    "C" : ["D"],
     "D" : [],
-    "E" : [],
+    "E" : ["D"],
     "F" : []
 }
 
-searched = {
-    
-}
+componentR = DFS("start", graph2, {key : False for key in graph2.keys()}, [])
+
+print(f"Busqueda DFS dio como resultado : {componentR}")
