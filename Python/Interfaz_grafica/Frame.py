@@ -24,6 +24,7 @@ window.config(bg = "orange")
 primer_frame = Frame()
 
 # Empaqueta el window con el frame creado, puede ir parametro de ubicacion "side" para el frame
+# Algunas entradas para side: left, right, top (centrar arriba)
 primer_frame.pack(side = "left")
 
 # CONFIG: Varios parametros, pero este cambia el color del fondo del frame, alto y ancho tambien
