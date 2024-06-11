@@ -18,21 +18,27 @@ def plot_taylor_approx(fcn: Callable[[float], float], x0: float, max_n: int, x_r
     
     original_fcn = sym.lambdify(x, fcn(x), "numpy")
     y_vals = original_fcn(x_vals)
-    plt.plot(x_vals, y_vals, label=f"Funcion original", color='black')
+    plt.plot(x_vals, y_vals, label=f"Función original", color='black')
     
     for n in range(1, max_n + 1):
         taylor_poly = taylor_approx(fcn, x0, n)
         taylor_fcn = sym.lambdify(x, taylor_poly, "numpy")
+        
+        # Asegurarse de que taylor_fcn devuelva un array del mismo tamaño que x_vals
         taylor_y_vals = taylor_fcn(x_vals)
-        plt.plot(x_vals, taylor_y_vals, label=f"Polinomio de taylor de orden n={n}")
+        if np.isscalar(taylor_y_vals):
+            taylor_y_vals = np.full_like(x_vals, taylor_y_vals)
+        
+        plt.plot(x_vals, taylor_y_vals, label=f"Polinomio de Taylor de orden n={n}")
     
     plt.xlabel("x")
     plt.ylabel("f(x)")
-    plt.title("Taylor")
+    plt.title("Aproximaciones de Taylor")
     plt.legend()
     plt.grid(True)
     plt.show()
 
-fcn = lambda x: sym.exp(x)  # Funcion inicial
+fcn = lambda x: 1 / (25*x*x + 1)  # Función inicial
 
-plot_taylor_approx(fcn, 0, 5, (-2, 2))
+plot_taylor_approx(fcn, 0, 5, (-0.2, 0.2))
+
