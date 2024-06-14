@@ -14,19 +14,18 @@ def DFS(start, graph, searched, componentR):
     return componentR
 
 graph = {
-    0: [],
-    1: [2, 3],
-    2: [1, 3, 4, 5],
-    3: [1, 2, 5, 7, 8],
-    4: [2, 5],
-    5: [2, 3, 4, 6],
-    6: [5],
-    7: [3, 8],
-    8: [3, 7]
+    0: [1, 5],
+    1: [5],
+    2: [0, 3, 4],
+    3: [4, 7],
+    4: [6],
+    5: [2, 4],
+    6: [3, 7],
+    7: []
 }
 
 
-componentR = DFS(1, graph, [False] * len(graph), [])
+componentR = DFS(0, graph, [False] * len(graph), [])
 
 print(f"Busqueda DFS dio como resultado : {componentR}")
 
