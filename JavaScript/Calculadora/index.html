@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadorita HTML</title>
+    <script src = "index.js" defer></script>
+    <style>
+        body{
+            font-family: Arial;
+            text-align: center;
+        }
+
+        input{
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadorita</h1>
+    <input type="text" name="" id="op1" placeholder="Operador 1">
+    <input type="text" name="" id="operador" placeholder="+, -, /, *">
+    <input type="text" name="" id="op2" placeholder="Operador 2">
+    <input type="submit" value="Calcular" id="calcular" onclick=calcular()>
+    <p id="resultado"></p>
+</body>
+</html>

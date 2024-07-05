@@ -18,3 +18,12 @@ let myDic = new Map([["Dann" , 20], ["Ojo", "Si"]]) // Un mapa no admite claves 
 myDic.set("NO", 24)
 console.log(myDic)
 console.log(myDic.get("Ojo"))
+
+// ENUM
+
+let myEnum = {
+    Hola : "Adios",
+    Hol : "Adios",
+    Ho : "Adios",
+    H : "Adios"
+}
