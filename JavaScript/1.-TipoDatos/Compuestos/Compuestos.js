@@ -25,5 +25,7 @@ let myEnum = {
     Hola : "Adios",
     Hol : "Adios",
     Ho : "Adios",
-    H : "Adios"
+    H : "Adios",
+    Adios : 15
 }
+console.log(myEnum)
