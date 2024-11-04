@@ -25,7 +25,7 @@ def dijkstra_algorithm(ponderated_graph, costs, parents):
         for n in neighbors.keys():
             new_cost = cost + neighbors[n]
             
-            if n not in costs or costs[n] > new_cost:
+            if costs[n] > new_cost:
                 costs[n] = new_cost
                 parents[n] = node
         processed.append(node)
